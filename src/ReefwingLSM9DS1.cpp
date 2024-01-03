@@ -1047,6 +1047,13 @@ bool ReefwingLSM9DS1::accelAvailable() {
 	return (STATUS_REG & 0x01);
 }
 
+// SYL
+bool ReefwingLSM9DS1::gyroAndAccelAvailable() {
+	uint8_t STATUS_REG = readByte(LSM9DS1AG_ADDRESS, LSM9DS1AG_STATUS_REG);
+	
+	return (STATUS_REG & 0x02) && (STATUS_REG & 0x01);
+}
+
 bool ReefwingLSM9DS1::magAvailable() {
 	uint8_t STATUS_REG_M = readByte(LSM9DS1M_ADDRESS, LSM9DS1M_STATUS_REG_M);
 	
