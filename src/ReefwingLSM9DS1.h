@@ -73,6 +73,8 @@ public:
 
   bool gyroAvailable();
   bool accelAvailable();
+  // SYL
+  bool gyroAndAccelAvailable();
   bool magAvailable();
   bool tempAvailable();
 
@@ -84,6 +86,10 @@ public:
   ScaledData readMag();
   RawData readMagRaw();
   InertialMessage readInertial();
+
+  // SYL
+  float gyroRawToScaled(float raw) const { return raw * _gRes; }
+  float accelRawToScaled(float raw) const { return raw * _aRes; }
 
   BiasOffsets calibrateGyro(bool save = true);
   BiasOffsets calibrateGyroFIFO(bool save = true);
